@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link, { LinkProps } from "next/link";
-import React, { ButtonHTMLAttributes, ReactNode } from "react";
+import Link from "next/link";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 import { SPACING as p } from "../@variable";
 
 const Navbar = () => {
@@ -8,12 +8,12 @@ const Navbar = () => {
     <header className={p}>
       <div className="flex justify-between items-center">
         <Image src="/logo.svg" alt="logo" width={100} height={100} />
-        <nav className="flex gap-7">
+        <nav className="hidden sm:flex gap-7">
           <NavLink href="/home">home</NavLink>
           <NavLink href="/">recipes</NavLink>
           <NavLink href="/">features</NavLink>
         </nav>
-        <div className="uppercase inline-flex gap-3">
+        <div className="uppercase hidden sm:inline-flex gap-3">
           <NavButton>signin</NavButton>
           <NavButton>signup</NavButton>
         </div>
@@ -43,7 +43,10 @@ type NavButtonProps = {
 };
 const NavButton = ({ children, ...props }: NavButtonProps) => {
   return (
-    <button className="uppercase bg-primary text-white p-[10px] rounded" {...props}>
+    <button
+      className="uppercase bg-primary text-white p-[10px] rounded"
+      {...props}
+    >
       {children}
     </button>
   );
