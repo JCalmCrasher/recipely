@@ -1,7 +1,8 @@
 import panchang from "next/font/local";
 import "./globals.css";
+import Navbar from "./components/navbar";
 const panchangFont = panchang({
-  src: "./fonts/Panchang-Variable.woff2",
+  src: "../fonts/Panchang-Variable.woff2",
   display: "swap"
 });
 
@@ -17,7 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={panchangFont.className}>{children}</body>
+      <body className={panchangFont.className}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
