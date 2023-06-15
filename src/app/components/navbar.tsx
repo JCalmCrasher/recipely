@@ -9,8 +9,8 @@ const Navbar = () => {
       <div className="flex justify-between items-center">
         <Image src="/logo.svg" alt="logo" width={100} height={100} />
         <nav className="hidden sm:flex gap-7">
-          <NavLink href="/home">home</NavLink>
-          <NavLink href="/">recipes</NavLink>
+          <NavLink href="/">home</NavLink>
+          <NavLink href="/recipes">recipes</NavLink>
           <NavLink href="/">features</NavLink>
         </nav>
         <div className="uppercase hidden sm:inline-flex gap-3">
