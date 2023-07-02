@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ButtonHTMLAttributes, ReactNode } from "react";
-import { SPACING as p } from "../@variable";
+import { SPACING as p } from "../utils/constants";
 
 const Navbar = () => {
   return (
