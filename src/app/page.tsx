@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { SPACING as p } from "./@variable";
+import { SPACING as p } from "./utils/constants";
 import Image from "next/image";
 import Card from "./components/card";
 
@@ -75,7 +75,10 @@ const FoodHighlightText = ({
 }) => {
   return (
     <span
-      className={clsx("capitalize px-7 py-3 border rounded-full w-fit mx-auto", className)}
+      className={clsx(
+        "capitalize px-7 py-3 border rounded-full w-fit mx-auto",
+        className
+      )}
     >
       {text}
     </span>
