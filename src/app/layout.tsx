@@ -1,6 +1,7 @@
 import panchang from "next/font/local";
-import "./globals.css";
 import Navbar from "./components/navbar";
+import "./globals.css";
+
 const panchangFont = panchang({
   src: "../fonts/Panchang-Variable.woff2",
   display: "swap"
