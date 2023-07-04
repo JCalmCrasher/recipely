@@ -42,7 +42,7 @@ const RecipeList = ({ recipes: fetchedRecipes }: Props) => {
 
         <Search onSubmit={onSearch} ref={queryRef} />
       </div>
-      <div className="grid grid-cols-4 gap-4 mt-4">
+      <div className="grid md:grid-cols-4 gap-4 mt-4">
         {recipes.length > 0 ? (
           recipes.map((recipe, i) => (
             <div key={i}>

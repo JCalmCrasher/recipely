@@ -10,7 +10,7 @@ const Search = forwardRef<HTMLInputElement, Props>(({ onSubmit }, ref) => {
       <div className="flex">
         <input
           type="text"
-          className="bg-transparent border border-teal-900 focus-visible:border-black h-11 outline-none px-4"
+          className="bg-transparent border border-teal-900 focus-visible:border-black h-11 outline-none px-4 w-full"
           ref={ref}
         />
         <button type="submit" className="bg-green-700 text-white p-[10px]">
