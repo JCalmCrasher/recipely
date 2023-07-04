@@ -1,11 +1,7 @@
-import panchang from "next/font/local";
+import { nunitoFont, panchangFont } from "@/fonts/font";
+import clsx from "clsx";
 import Navbar from "./components/navbar";
 import "./globals.css";
-
-const panchangFont = panchang({
-  src: "../fonts/Panchang-Variable.woff2",
-  display: "swap"
-});
 
 export const metadata = {
   title: "Recipely",
@@ -19,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={panchangFont.className}>
+      <body className={clsx(nunitoFont.variable, panchangFont.variable)}>
         <Navbar />
         {children}
       </body>

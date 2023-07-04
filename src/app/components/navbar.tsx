@@ -2,10 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ButtonHTMLAttributes, ReactNode } from "react";
 import { SPACING as p } from "../utils/constants";
+import clsx from "clsx";
 
 const Navbar = () => {
   return (
-    <header className={p}>
+    <header className={clsx(p, "font-panchang")}>
       <div className="flex justify-between items-center">
         <Image src="/logo.svg" alt="logo" width={100} height={100} />
         <nav className="hidden sm:flex gap-7">

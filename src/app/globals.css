@@ -15,7 +15,14 @@
   }
 } */
 
+h1,
+h2,
+h3 {
+  font-family: var(--font-panchang);
+}
+
 body {
   color: var(--color);
   background: var(--background);
+  font-family: var(--font-nunito);
 }

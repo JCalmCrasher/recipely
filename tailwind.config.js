@@ -16,6 +16,10 @@ module.exports = {
         primary: "#472929",
         secondary: "#472929",
         info: "#B3A0CD"
+      },
+      fontFamily: {
+        nunito: ["var(--font-nunito)"],
+        panchang: ["var(--font-panchang)"]
       }
     }
   },
