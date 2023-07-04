@@ -2,12 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FormEvent, Suspense, useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { Recipe, Recipes } from "../types";
 import { buildQueryParams, getHeaders } from "../utils/helpers";
 import Card from "./card";
 import Search from "./search";
-import { Skeleton } from "./skeleton";
 
 type Props = {
   recipes: Recipe[];
@@ -47,7 +46,7 @@ const RecipeList = ({ recipes: fetchedRecipes }: Props) => {
           recipes.map((recipe, i) => (
             <div key={i}>
               <Card>
-                <Link href="/">
+                <Link href={`/recipes/${recipe.id}`}>
                   <Image
                     src={recipe?.image}
                     alt={recipe?.title}

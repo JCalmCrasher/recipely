@@ -8,3 +8,9 @@ export type Recipe = {
 export type Recipes = {
   results: Recipe[];
 };
+
+export type RecipeSummary = {
+  id: number;
+  title: string;
+  summary: string;
+};
