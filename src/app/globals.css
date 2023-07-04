@@ -21,6 +21,11 @@ h3 {
   font-family: var(--font-panchang);
 }
 
+div.summary > a {
+  color: rgb(60, 60, 209);
+  text-decoration: underline;
+}
+
 body {
   color: var(--color);
   background: var(--background);
