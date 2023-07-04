@@ -7,11 +7,12 @@ import { Recipe, Recipes } from "../types";
 import { buildQueryParams, getHeaders } from "../utils/helpers";
 import Card from "./card";
 import Search from "./search";
+import { Skeleton } from "./skeleton";
 
 type Props = {
   recipes: Recipe[];
 };
-const RecipeList = async ({ recipes: fetchedRecipes }: Props) => {
+const RecipeList = ({ recipes: fetchedRecipes }: Props) => {
   const [recipes, setRecipes] = useState<Recipe[]>(fetchedRecipes);
   const queryRef = useRef<HTMLInputElement>(null);
 
@@ -38,33 +39,32 @@ const RecipeList = async ({ recipes: fetchedRecipes }: Props) => {
     <>
       <div className="flex flex-col md:flex-row md:items-center justify-between">
         <h2 className="text-xl font-bold">All Recipes</h2>
+
         <Search onSubmit={onSearch} ref={queryRef} />
       </div>
       <div className="grid grid-cols-4 gap-4 mt-4">
-        <Suspense fallback={<div>Loading...</div>}>
-          {recipes.length > 0 ? (
-            recipes.map((recipe, i) => (
-              <div key={i}>
-                <Card>
-                  <Link href="/">
-                    <Image
-                      src={recipe?.image}
-                      alt={recipe?.title}
-                      width={100}
-                      height={100}
-                      className="w-full md:w-full h-w-fit"
-                    />
-                  </Link>
-                  <Link href="/">
-                    <p className="text-sm mt-4">{recipe?.title}</p>
-                  </Link>
-                </Card>
-              </div>
-            ))
-          ) : (
-            <span>No recipes available</span>
-          )}
-        </Suspense>
+        {recipes.length > 0 ? (
+          recipes.map((recipe, i) => (
+            <div key={i}>
+              <Card>
+                <Link href="/">
+                  <Image
+                    src={recipe?.image}
+                    alt={recipe?.title}
+                    width={100}
+                    height={100}
+                    className="w-full md:w-full h-w-fit"
+                  />
+                </Link>
+                <Link href="/">
+                  <p className="text-sm mt-4">{recipe?.title}</p>
+                </Link>
+              </Card>
+            </div>
+          ))
+        ) : (
+          <span>No recipes available</span>
+        )}
       </div>
     </>
   );
