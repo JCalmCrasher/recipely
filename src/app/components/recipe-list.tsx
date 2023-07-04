@@ -43,24 +43,28 @@ const RecipeList = ({ recipes: fetchedRecipes }: Props) => {
       </div>
       <div className="grid md:grid-cols-4 gap-4 mt-4">
         {recipes.length > 0 ? (
-          recipes.map((recipe, i) => (
-            <div key={i}>
-              <Card>
-                <Link href={`/recipes/${recipe.id}`}>
-                  <Image
-                    src={recipe?.image}
-                    alt={recipe?.title}
-                    width={100}
-                    height={100}
-                    className="w-full md:w-full h-w-fit"
-                  />
-                </Link>
-                <Link href="/">
-                  <p className="text-sm mt-4">{recipe?.title}</p>
-                </Link>
-              </Card>
-            </div>
-          ))
+          recipes.map((recipe, i) => {
+            const url = `/recipes/${recipe.id}`;
+
+            return (
+              <div key={i}>
+                <Card>
+                  <Link href={url}>
+                    <Image
+                      src={recipe?.image}
+                      alt={recipe?.title}
+                      width={100}
+                      height={100}
+                      className="w-full md:w-full h-w-fit"
+                    />
+                  </Link>
+                  <Link href={url}>
+                    <p className="text-sm mt-4">{recipe?.title}</p>
+                  </Link>
+                </Card>
+              </div>
+            );
+          })
         ) : (
           <span>No recipes available</span>
         )}
