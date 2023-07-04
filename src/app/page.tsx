@@ -1,13 +1,13 @@
 import clsx from "clsx";
-import { SPACING as p } from "./utils/constants";
 import Image from "next/image";
 import Card from "./components/card";
+import Shell from "./components/shell";
 
 export default function Home() {
   return (
-    <main>
+    <Shell>
       <section className="flex flex-col md:flex-row">
-        <div className={clsx(p, "w-full")}>
+        <div className={clsx( "w-full")}>
           <h1 className="text-3xl sm:text-6xl font-bold uppercase">
             food <br />
             recipes
@@ -62,7 +62,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </main>
+    </Shell>
   );
 }
 
