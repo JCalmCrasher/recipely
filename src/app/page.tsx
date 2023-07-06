@@ -25,7 +25,7 @@ export default function Home() {
             />
             <div className="mt-14">
               <p>Recipe of the day</p>
-              <Card>
+              <Card classNames="mt-2">
                 <div>
                   <span className="font-bold text-sm">Ewa agoyin</span>
                   <ul className="list-disc pl-8 text-sm">
