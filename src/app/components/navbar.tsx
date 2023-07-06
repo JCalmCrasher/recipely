@@ -12,7 +12,6 @@ const Navbar = () => {
         <nav className="hidden sm:flex gap-7">
           <NavLink href="/">home</NavLink>
           <NavLink href="/recipes">recipes</NavLink>
-          <NavLink href="/">features</NavLink>
         </nav>
         <div className="uppercase hidden sm:inline-flex gap-3">
           <NavButton>signin</NavButton>
