@@ -1,9 +1,8 @@
-import React, { ReactNode } from "react";
-import { SPACING as p } from "../utils/constants";
+import { ReactNode } from "react";
 
 
 const Shell = ({ children }: { children: ReactNode }) => {
-  return <main className={p}>{children}</main>;
+  return <main className='px-8 pb-8'>{children}</main>;
 };
 
 export default Shell;
