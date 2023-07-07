@@ -1,5 +1,5 @@
 import { cache } from "react";
-import type { RecipeSummary, Recipes } from "../types";
+import type { RecipeIngredients, RecipeSummary, Recipes } from "../types";
 import { buildQueryParams, getHeaders } from "../utils/helpers";
 import "server-only";
 
@@ -29,6 +29,23 @@ export const getRecipeSummary = cache(
     const headers = getHeaders();
 
     const res = await fetch(`${baseUrl}/recipes/${recipeId}/summary`, {
+      headers
+    });
+
+    if (!res.ok) {
+      // This will activate the closest `error.js` Error Boundary
+      throw new Error("Failed to fetch data");
+    }
+
+    return res.json();
+  }
+);
+
+export const getRecipeIngredients = cache(
+  async (recipeId = ""): Promise<RecipeIngredients> => {
+    const headers = getHeaders();
+
+    const res = await fetch(`${baseUrl}/recipes/${recipeId}/ingredientWidget.json`, {
       headers
     });
 

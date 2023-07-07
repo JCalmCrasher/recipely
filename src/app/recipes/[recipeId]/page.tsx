@@ -1,14 +1,22 @@
 import Card from "@/app/components/card";
 import Shell from "@/app/components/shell";
-import { getRecipeSummary } from "@/app/service/recipe";
+import { getRecipeIngredients, getRecipeSummary } from "@/app/service/recipe";
+import { decimalToFraction } from "@/app/utils/helpers";
 import Image from "next/image";
+import { v4 as key } from "uuid";
 
 type ParamsProps = {
   params: { recipeId: string };
 };
 const RecipeInfo = async ({ params }: ParamsProps) => {
   const { recipeId } = params;
-  const recipe = await getRecipeSummary(recipeId);
+  const recipeData = getRecipeSummary(recipeId);
+  const recipeIngredientsData = getRecipeIngredients(recipeId);
+
+  const [recipe, recipeIngredients] = await Promise.all([
+    recipeData,
+    recipeIngredientsData
+  ]);
 
   return (
     <Shell>
@@ -31,9 +39,12 @@ const RecipeInfo = async ({ params }: ParamsProps) => {
           >
             <h3 className="text-md font-semibold">Ingredients</h3>
             <ul className="font-panchang ml-4 list-disc list-inside mt-2">
-              <li>Oil</li>
-              <li>Pepper</li>
-              <li>Meat & fish</li>
+              {recipeIngredients.ingredients.map((ingredient) => {
+                const { amount } = ingredient;
+                return (
+                  <li key={key()}>{`${decimalToFraction(amount.us.value)} ${ingredient.name}`}</li>
+                );
+              })}
             </ul>
           </Card>
         </aside>

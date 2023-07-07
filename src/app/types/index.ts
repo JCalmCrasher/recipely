@@ -14,3 +14,22 @@ export type RecipeSummary = {
   title: string;
   summary: string;
 };
+
+export type Ingredient = {
+  name: string;
+  image: string;
+  amount: {
+    metric: {
+      value: number;
+      unit: string;
+    };
+    us: {
+      value: number;
+      unit: string;
+    };
+  };
+};
+
+export type RecipeIngredients = {
+  ingredients: Ingredient[];
+};
