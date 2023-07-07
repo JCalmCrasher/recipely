@@ -7,9 +7,9 @@ import clsx from "clsx";
 const Navbar = () => {
   return (
     <header className={clsx(p, "font-panchang")}>
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row justify-between items-center">
         <Image src="/logo.svg" alt="logo" width={100} height={100} />
-        <nav className="hidden sm:flex gap-7">
+        <nav className="flex gap-4 md:gap-7">
           <NavLink href="/">home</NavLink>
           <NavLink href="/recipes">recipes</NavLink>
         </nav>
