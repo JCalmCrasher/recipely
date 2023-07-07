@@ -14,8 +14,8 @@ const Navbar = () => {
           <NavLink href="/recipes">recipes</NavLink>
         </nav>
         <div className="uppercase hidden sm:inline-flex gap-3">
-          <NavButton>signin</NavButton>
-          <NavButton>signup</NavButton>
+          <NavButton disabled>signin</NavButton>
+          <NavButton disabled>signup</NavButton>
         </div>
       </div>
     </header>
@@ -37,14 +37,15 @@ const NavLink = ({ children, href = "", ...props }: NavLinkProps) => {
   );
 };
 
-type NavButtonProps = {
+interface NavButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  props?: ButtonHTMLAttributes<HTMLButtonElement>;
-};
-const NavButton = ({ children, ...props }: NavButtonProps) => {
+  className?: string;
+  // props?: ButtonHTMLAttributes<HTMLButtonElement>;
+}
+const NavButton = ({ className, children, ...props }: NavButtonProps) => {
   return (
     <button
-      className="uppercase bg-primary text-white p-[10px] rounded"
+      className={`disabled:cursor-not-allowed disabled:bg-gray-400 uppercase bg-primary text-white p-[10px] rounded ${className}`}
       {...props}
     >
       {children}
