@@ -1,6 +1,10 @@
 import Card from "@/app/components/card";
 import Shell from "@/app/components/shell";
-import { getRecipeIngredients, getRecipeSummary } from "@/app/service/recipe";
+import {
+  getRecipeIngredients,
+  getRecipeInstructions,
+  getRecipeSummary
+} from "@/app/service/recipe";
 import { decimalToFraction } from "@/app/utils/helpers";
 import Image from "next/image";
 import { v4 as key } from "uuid";
@@ -12,17 +16,19 @@ const RecipeInfo = async ({ params }: ParamsProps) => {
   const { recipeId } = params;
   const recipeData = getRecipeSummary(recipeId);
   const recipeIngredientsData = getRecipeIngredients(recipeId);
+  const recipeInstructionData = getRecipeInstructions(recipeId);
 
-  const [recipe, recipeIngredients] = await Promise.all([
+  const [recipe, recipeIngredients, recipeInstructions] = await Promise.all([
     recipeData,
-    recipeIngredientsData
+    recipeIngredientsData,
+    recipeInstructionData
   ]);
 
   return (
     <Shell>
       <article>
         <h2 className="text-xl font-bold">{recipe.title}</h2>
-        <Card shouldHover={false} classNames="w-full min-h-[200px] mt-4">
+        <Card shouldHover={false} classNames="bg-slate-300 w-full min-h-[200px] mt-4">
           <h3 className="text-md font-semibold">About</h3>
           <div
             className="mt-3 summary"
@@ -35,14 +41,16 @@ const RecipeInfo = async ({ params }: ParamsProps) => {
         <aside>
           <Card
             shouldHover={false}
-            classNames="md:w-[262px] min-h-[200px] mt-[54px] md:ml-10"
+            classNames="bg-teal-300 md:w-[262px] min-h-[200px] mt-[54px] md:ml-10"
           >
             <h3 className="text-md font-semibold">Ingredients</h3>
             <ul className="font-panchang ml-4 list-disc list-inside mt-2">
               {recipeIngredients.ingredients.map((ingredient) => {
                 const { amount } = ingredient;
                 return (
-                  <li key={key()}>{`${decimalToFraction(amount.us.value)} ${ingredient.name}`}</li>
+                  <li className="font-nunito text-lg" key={key()}>{`${decimalToFraction(amount.us.value)} ${
+                    ingredient.name
+                  }`}</li>
                 );
               })}
             </ul>
@@ -58,13 +66,15 @@ const RecipeInfo = async ({ params }: ParamsProps) => {
         <aside>
           <Card
             shouldHover={false}
-            classNames="md:w-[262px] min-h-[200px] mt-4 md:mt-[120px]"
+            classNames="bg-blue-300 min-h-[200px] mt-4 md:mt-[120px]"
           >
             <h3 className="text-md font-semibold">Steps</h3>
             <ul className="font-panchang ml-4 list-disc list-inside mt-2">
-              <li>Oil</li>
-              <li>Pepper</li>
-              <li>Meat & fish</li>
+              {recipeInstructions.map((_recipes) =>
+                _recipes.steps.map((s) => (
+                  <li className="font-nunito text-lg" key={key()}>{s.step}</li>
+                ))
+              )}
             </ul>
           </Card>
         </aside>
