@@ -3,6 +3,11 @@
 Find food recipes.
 
 ## Getting Started
+#### Create `.env` file
+Create a `.env` file in the root directory and add the environment variables as shown in the `.env.example` file.
+
+#### API key
+Create an account on [Spoonacular](https://spoonacular.com/food-api/console) to get an API key
 
 #### Install
 ```bash
