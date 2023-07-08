@@ -21,7 +21,7 @@ export default function Home() {
               alt="food showcase"
               width={100}
               height={100}
-              className="w-full md:w-fit h-w-fit mt-[120px]"
+              className="w-full md:w-fit h-w-fit mt-10 md:mt-[120px]"
             />
             <div className="mt-14">
               <p>Recipe of the day</p>
@@ -38,7 +38,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="w-full md:w-[70%] border border-black h-fit">
+        <div className="w-full md:w-[70%] border border-black h-fit mt-4 md:mt-0">
           <div className=" bg-info">
             <Image
               src="/food-showcase.svg"
@@ -49,12 +49,12 @@ export default function Home() {
             />
           </div>
           <div className="flex flex-col md:flex-row">
-            <div className="flex flex-col gap-4 px-[38px] md:border md:border-r-black w-full  py-4">
+            <div className="md:flex flex-col hidden gap-4 px-[38px] md:border md:border-r-black w-full  py-4">
               <FoodHighlightText className="border-info" text="soup" />
               <FoodHighlightText className="border-[#DE6B47]" text="food" />
               <FoodHighlightText className="border-[#42DA29]" text="drinks" />
             </div>
-            <div className="w-full flex flex-col items-center py-4">
+            <div className="w-full md:flex flex-col items-center py-4 hidden">
               <span className="font-bold text-2xl">*</span>
               <span className="font-bold text-2xl">+500</span>
               <span>9ja Food recipes</span>
